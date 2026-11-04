@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>朱莉娅的小厨房 🍽️ Julia's Kitchen</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts for Elegant & Cute Typography -->
+    <link href="https://fonts.googleapis.com/css2?family=ZCOOL+XiaoWei&family=Noto+Serif+SC:wght@500;700&family=Quicksand:wght@500;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans SC', 'Quicksand', sans-serif;
+            background-color: #fcf9f5;
+            background-image: radial-gradient(#eddcd2 1px, transparent 1px);
+            background-size: 20px 20px;
+            color: #4a3e3d;
+        }
+        .font-serif-title {
+            font-family: 'ZCOOL XiaoWei', 'Noto Serif SC', serif;
+        }
+        .french-card {
+            background: rgba(255, 255, 255, 0.95);
+            border: 1.5px solid #f0d5c0;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px -5px rgba(210, 160, 130, 0.12), 0 8px 10px -6px rgba(210, 160, 130, 0.08);
+            backdrop-filter: blur(8px);
+        }
+        .french-badge {
+            background-color: #fcf0e4;
+            border: 1px solid #ebd0bc;
+            color: #b05c30;
+        }
+        .dish-card {
+            transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .dish-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px -2px rgba(180, 130, 100, 0.15);
+        }
+        /* Hide scrollbars gracefully */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="min-h-screen pb-36 selection:bg-orange-100 selection:text-orange-900">
+
+    <!-- Aesthetic French Bistro Header -->
+    <header class="bg-gradient-to-b from-[#fdf4ec] via-[#faf0e6] to-[#fcf9f5] pt-7 pb-6 px-4 rounded-b-[36px] shadow-sm border-b border-[#eedacb] sticky top-0 z-30">
+        <div class="max-w-md mx-auto text-center relative">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/90 border border-[#e8cebc] shadow-sm mb-2">
+                <span class="text-amber-700 text-xs font-semibold tracking-wider uppercase font-serif-title">· Bonjour & Bon Appétit ·</span>
+            </div>
+            
+            <h1 class="text-2xl md:text-3xl font-bold font-serif-title text-[#5c3e31] tracking-wide flex items-center justify-center gap-2">
+                <span>朱莉娅的小厨房</span>
+                <span class="text-lg">🥖</span>
+            </h1>
+            
+            <p class="text-[12px] text-[#916b58] font-medium mt-1.5 tracking-widest">
+                法式浪漫与私房料理的温暖碰撞
+            </p>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-md mx-auto px-4 mt-4">
+
+        <!-- Elegant Single-Line Structured Announcement Banner -->
+        <div class="french-card p-3.5 mb-5 space-y-2 bg-white/90">
+            <div class="flex items-center justify-between text-[11px] text-[#6b4e40] bg-[#faede2] px-3 py-2 rounded-xl border border-[#f0cca8]">
+                <div class="flex items-center gap-2 font-bold text-[#543628]">
+                    <span class="bg-[#e8a382] text-white rounded-md px-1.5 py-0.5 text-[9px] font-bold">🍜 面食专属</span>
+                    <span>意面免费选 细面 / 扁意面</span>
+                </div>
+                <div class="flex items-center gap-1">
+                    <span class="text-[#b05223] font-bold">手扯面 +1€</span>
+                </div>
+            </div>
+
+            <div class="flex items-center justify-between text-[11px] text-[#6b4e40] bg-[#fff0ed] px-3 py-2 rounded-xl border border-[#f7c8be]">
+                <div class="flex items-center gap-2 font-bold text-[#543628]">
+                    <span class="bg-[#d98282] text-white rounded-md px-1.5 py-0.5 text-[9px] font-bold">🍱 炒菜/炖菜加购</span>
+                    <span>米饭 + 盲盒小碟菜</span>
+                </div>
+                <div class="flex items-center gap-1">
+                    <span class="text-[#bd4444] font-bold text-xs">+1.00€</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menu Categories -->
+        <div id="menu-container" class="space-y-6">
+            <!-- Rendered by JavaScript -->
+        </div>
+
+        <!-- Rice & Blind Box Add-on Banner -->
+        <div class="mt-6 french-card p-4 bg-gradient-to-r from-[#fff9f2] via-[#fff5eb] to-[#fdf0e6] border border-[#f5ccb0] shadow-sm">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <div class="w-11 h-11 rounded-2xl bg-white border border-[#f0cca8] flex items-center justify-center text-xl shadow-sm">
+                        🍱
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-sm text-[#4a3528] font-serif-title flex items-center gap-1.5">
+                            <span>米饭 + 盲盒小碟菜品</span>
+                        </h3>
+                        <p class="text-[11px] text-[#a1684c] font-medium mt-0.5">香软白米饭 + 朱莉娅主厨随机惊喜菜</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2">
+                    <span class="text-[#c25a2b] font-bold text-xs">+1.00€</span>
+                    <label class="relative inline-flex items-center cursor-pointer">
+                        <input type="checkbox" id="addon-checkbox" class="sr-only peer" onchange="toggleAddon(this)">
+                        <div class="w-11 h-6 bg-[#e6d0bf] peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#d97749] shadow-inner"></div>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Floating Sticky Bottom Bar -->
+    <div class="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-md border-t border-[#f0cca8] py-3 px-4 z-40 shadow-[0_-8px_25px_rgba(180,120,90,0.12)]">
+        <div class="max-w-md mx-auto flex items-center justify-between">
+            <div class="flex items-center gap-3.5">
+                <div class="w-12 h-12 rounded-2xl bg-[#fdf0e3] border border-[#e8be9d] flex items-center justify-center text-xl relative shadow-sm">
+                    🛍️
+                    <span id="badge-count" class="absolute -top-1.5 -right-1.5 bg-[#d65f36] text-white font-bold text-[10px] min-w-[20px] h-[20px] px-1 rounded-full flex items-center justify-center border-2 border-white shadow-sm">0</span>
+                </div>
+                <div>
+                    <div class="text-[11px] text-[#8c6b58] font-medium">已选择 <span id="total-items-count" class="font-bold text-[#c25a2b]">0</span> 件美食</div>
+                    <div class="text-xl font-bold font-serif-title text-[#4d3326]">合计: <span id="total-price" class="text-[#c25a2b]">0.00</span>€</div>
+                </div>
+            </div>
+            <button onclick="openOrderModal()" class="bg-gradient-to-r from-[#e08358] to-[#d96752] hover:from-[#d17449] hover:to-[#ca5944] text-white font-bold py-3 px-5 rounded-2xl shadow-md transition-all active:scale-95 flex items-center gap-2 text-xs tracking-wider uppercase border border-white/30">
+                <span>生成菜单小结</span>
+                <i class="fa-solid fa-arrow-right text-[10px]"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Order Summary Modal -->
+    <div id="order-modal" class="fixed inset-0 bg-black/45 z-50 flex items-center justify-center p-4 hidden backdrop-blur-sm">
+        <div class="bg-white rounded-[28px] w-full max-w-md overflow-hidden shadow-2xl border border-[#eed7c5] animate-in fade-in zoom-in duration-200">
+            <div class="bg-gradient-to-r from-[#fdf2e9] to-[#f8e5d6] p-4 text-[#5c3e31] flex justify-between items-center border-b border-[#f0cca8]">
+                <h3 class="font-bold text-base font-serif-title flex items-center gap-2">
+                    <span>🍷 朱莉娅的小厨房 · 美味点单</span>
+                </h3>
+                <button onclick="closeOrderModal()" class="w-7 h-7 rounded-full bg-white/80 hover:bg-white text-[#734f3f] flex items-center justify-center transition shadow-sm">
+                    <i class="fa-solid fa-xmark text-xs"></i>
+                </button>
+            </div>
+            <div class="p-5 max-h-[60vh] overflow-y-auto space-y-4 bg-[#fffdfb]">
+                <div id="modal-order-content" class="bg-[#fcf5ef] p-4 rounded-2xl border border-[#ebd2be] font-mono text-xs text-[#4d382c] whitespace-pre-wrap leading-relaxed shadow-inner">
+                    <!-- Order content -->
+                </div>
+                <p class="text-[11px] text-[#8c6552] text-center font-medium">💌 点击下方按钮一键复制点单，直接发送给朱莉娅吧 💌</p>
+            </div>
+            <div class="p-4 bg-[#fdf8f4] border-t border-[#f0cca8] flex gap-3">
+                <button onclick="copyOrderText()" class="flex-1 bg-gradient-to-r from-[#e08358] to-[#d96752] hover:from-[#d17449] text-white font-bold py-3 px-4 rounded-2xl shadow transition text-xs flex items-center justify-center gap-2">
+                    <i class="fa-regular fa-copy"></i>
+                    <span id="copy-btn-text">复制点单明细 📋</span>
+                </button>
+                <button onclick="closeOrderModal()" class="px-4 py-3 border border-[#e0c3ad] rounded-2xl text-[#6e4e3d] hover:bg-[#f2e2d4] text-xs font-bold">
+                    关闭
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed top-20 left-1/2 -translate-x-1/2 bg-[#5c3e31] text-white px-5 py-2.5 rounded-full text-xs font-medium shadow-xl z-50 transition-all duration-300 opacity-0 pointer-events-none flex items-center gap-2 border border-[#8c634f]">
+        <span class="text-base">✨</span>
+        <span id="toast-msg">提示信息</span>
+    </div>
+
+    <!-- Logic Script -->
+    <script>
+        // High Quality SVG Food Illustration Visuals for EACH dish
+        const dishImages = {
+            "m1": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%23fef2e6'/><path d='M20 50 Q50 85 80 50 Z' fill='%23e89a5e'/><path d='M25 50 Q50 30 75 50' stroke='%23fce2a6' stroke-width='8' fill='none' stroke-linecap='round'/><circle cx='42' cy='45' r='8' fill='%238c4b27'/><circle cx='58' cy='45' r='7' fill='%23a65b32'/><circle cx='50' cy='52' r='4' fill='%23578038'/><circle cx='40' cy='38' r='3' fill='%2382a342'/></svg>",
+            "m2": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%23fff3eb'/><ellipse cx='50' cy='55' rx='32' ry='20' fill='%23f5b778'/><path d='M30 50 Q45 35 65 52 Q50 60 30 50' fill='%23ff9473'/><circle cx='40' cy='48' r='6' fill='%23e05a47'/><circle cx='60' cy='52' r='6' fill='%23e05a47'/><circle cx='48' cy='42' r='2' fill='%23382d29'/><circle cx='55' cy='58' r='2' fill='%23382d29'/></svg>",
+            "m3": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%23fff0ed'/><path d='M25 55 Q50 80 75 55' stroke='%23e0533c' stroke-width='14' fill='none' stroke-linecap='round'/><path d='M28 50 Q50 25 72 50' stroke='%23fcd790' stroke-width='8' fill='none'/><circle cx='45' cy='52' r='3' fill='%239e2e1b'/><circle cx='55' cy='48' r='3' fill='%239e2e1b'/><path d='M48 40 L52 42' stroke='%23416922' stroke-width='3'/></svg>",
+            "s1": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%23fdf6ee'/><ellipse cx='50' cy='52' rx='28' ry='18' fill='%23e0baa0'/><path d='M35 45 Q45 38 55 45 Q50 55 35 45' fill='%23fcedc0'/><circle cx='40' cy='58' r='6' fill='%23704832'/><circle cx='58' cy='44' r='7' fill='%2380543c'/></svg>",
+            "s2": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%23fdf4ec'/><rect x='25' y='35' width='50' height='30' rx='8' fill='%238a4929'/><line x1='35' y1='38' x2='35' y2='62' stroke='%23d98c5f' stroke-width='3'/><line x1='48' y1='38' x2='48' y2='62' stroke='%23d98c5f' stroke-width='3'/><line x1='61' y1='38' x2='61' y2='62' stroke='%23d98c5f' stroke-width='3'/><circle cx='50' cy='42' r='2' fill='%23fff'/><circle cx='42' cy='55' r='1.5' fill='%23fff'/></svg>",
+            "s3": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%23fef2eb'/><circle cx='38' cy='45' r='9' fill='%23f7c488'/><circle cx='58' cy='42' r='8' fill='%23f7c488'/><circle cx='48' cy='58' r='10' fill='%23d95738'/><circle cx='62' cy='58' r='6' fill='%238c4b27'/><circle cx='34' cy='58' r='5' fill='%234a7828'/></svg>",
+            "s4": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%23fff1ed'/><path d='M28 40 Q50 35 72 40' stroke='%23c9492c' stroke-width='6' stroke-linecap='round'/><path d='M25 50 Q50 45 75 50' stroke='%23d994e6' stroke-width='5' stroke-linecap='round'/><path d='M30 60 Q50 55 70 60' stroke='%23e08f38' stroke-width='5' stroke-linecap='round'/></svg>",
+            "s5": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%23fff2ee'/><circle cx='40' cy='45' r='10' fill='%23f58462'/><circle cx='60' cy='48' r='11' fill='%23f58462'/><circle cx='48' cy='60' r='9' fill='%23f58462'/><circle cx='50' cy='40' r='4' fill='%239e3621'/><circle cx='35' cy='55' r='4' fill='%23507a2d'/></svg>",
+            "s6_1": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%23fff8eb'/><path d='M30 42 Q45 35 60 45 Q45 60 30 42' fill='%23ffca42'/><path d='M50 52 Q65 42 75 58 Q55 68 50 52' fill='%23e34b32'/><circle cx='42' cy='52' r='4' fill='%23ffca42'/><path d='M42 40 L45 42' stroke='%234d7a27' stroke-width='3'/></svg>",
+            "s6_2": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%23fff8eb'/><path d='M30 42 Q45 35 60 45 Q45 60 30 42' fill='%23ffca42'/><circle cx='55' cy='52' r='7' fill='%23ebd5c5'/><circle cx='42' cy='58' r='6' fill='%23ebd5c5'/></svg>",
+            "s7": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%23fffbeb'/><ellipse cx='50' cy='52' rx='28' ry='18' fill='%23f5b338'/><ellipse cx='50' cy='48' rx='20' ry='12' fill='%23ffda6b'/><circle cx='40' cy='48' r='3' fill='%23c26021'/><circle cx='58' cy='50' r='2.5' fill='%234d7a27'/></svg>",
+            "s8_1": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%23f4f7ee'/><path d='M30 45 Q50 30 70 45 Q50 75 30 45' fill='%2377a843'/><path d='M38 48 Q50 38 62 48' fill='%239ebd6d'/><circle cx='48' cy='52' r='3' fill='%233e5422'/></svg>",
+            "s8_2": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%23f8f9f2'/><path d='M30 45 Q50 30 70 45 Q50 75 30 45' fill='%2389bd53'/><path d='M38 48 Q50 38 62 48' fill='%23b2d685'/><circle cx='55' cy='50' r='3' fill='%236e2d1d'/></svg>",
+            "d1_1": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%23fef6eb'/><ellipse cx='50' cy='54' rx='30' ry='18' fill='%23e69635'/><rect x='36' y='42' width='14' height='12' rx='3' fill='%2370391d'/><rect x='54' y='46' width='12' height='10' rx='3' fill='%2370391d'/></svg>",
+            "d1_2": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%23fff0ed'/><ellipse cx='50' cy='54' rx='30' ry='18' fill='%23e05338'/><rect x='36' y='42' width='14' height='12' rx='3' fill='%2370391d'/><rect x='54' y='46' width='12' height='10' rx='3' fill='%2370391d'/></svg>",
+            "d2": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%23fdf5ee'/><circle cx='40' cy='48' r='10' fill='%23e0a253'/><circle cx='60' cy='46' r='9' fill='%23e0a253'/><rect x='42' y='52' width='16' height='12' rx='4' fill='%23783e23'/><path d='M35 58 Q50 65 65 58' stroke='%23a15833' stroke-width='4' fill='none'/></svg>",
+            "d3": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%23fcf3ec'/><rect x='28' y='40' width='44' height='24' rx='6' fill='%2359301d'/><path d='M30 42 L70 42 L70 48 L30 48 Z' fill='%23f2bd85'/><circle cx='50' cy='38' r='8' fill='%23fcedc0'/><circle cx='50' cy='38' r='4' fill='%23d9a752'/></svg>"
+        };
+
+        const menuData = [
+            {
+                category: "面食类 Pasta & Noodles",
+                icon: "🍜",
+                items: [
+                    { id: "m1", name: "碗杂面", price: 5.0, type: "noodle", desc: "香浓肉酱，软烂豌豆与醇厚红油" },
+                    { id: "m2", name: "黑椒虾仁意面", price: 5.0, type: "noodle", desc: "鲜嫩虾仁与浓郁黑椒炒至入味" },
+                    { id: "m3", name: "川味番茄肉酱意面", price: 5.0, type: "noodle", desc: "特调川味番茄炖肉酱，酸甜微辣开胃" }
+                ]
+            },
+            {
+                category: "煎炒类 Sautéed Dishes",
+                icon: "🍳",
+                items: [
+                    { id: "s8_1", name: "干锅包菜", price: 1.5, type: "normal", desc: "麻辣鲜香，焦香清脆开胃" },
+                    { id: "s8_2", name: "醋溜包菜", price: 1.5, type: "normal", desc: "酸辣爽口，清脆下饭首选" },
+                    { id: "s6_1", name: "番茄炒蛋", price: 3.0, type: "normal", desc: "经典家常味，蛋香浓郁汁多" },
+                    { id: "s6_2", name: "口蘑炒蛋", price: 3.0, type: "normal", desc: "鲜嫩口蘑配金黄炒蛋" },
+                    { id: "s7", name: "公瑾爆蛋", price: 3.0, type: "normal", desc: "金黄酥脆爆蛋，特调酱汁" },
+                    { id: "s1", name: "香菇 / 口蘑滑鸡", price: 4.5, type: "normal", desc: "根据当日新鲜食材提供香菇或口蘑" },
+                    { id: "s2", name: "照烧鸡排", price: 4.5, type: "normal", desc: "外酥里嫩，裹满咸甜照烧汁" },
+                    { id: "s3", name: "宫保鸡丁", price: 5.5, type: "normal", desc: "经典川味，酸甜微辣爽口" },
+                    { id: "s4", name: "鱼香肉丝", price: 5.5, type: "normal", desc: "经典川味鱼香，鲜甜酸辣交织，正宗鱼眼小葱提香" },
+                    { id: "s5", name: "宫保虾球", price: 6.5, type: "normal", desc: "Q弹大虾仁，裹以宫保酱汁" }
+                ]
+            },
+            {
+                category: "炖煮类 Stews & Braised",
+                icon: "🍲",
+                items: [
+                    { id: "d2", name: "土豆烧肉", price: 5.5, type: "normal", desc: "软糯土豆吸饱肉汁，软烂醇香" },
+                    { id: "d3", name: "台式卤肉", price: 5.5, type: "normal", desc: "慢炖红烧肉肥而不腻，地道风味" },
+                    { id: "d1_1", name: "咖喱牛腩", price: 8.0, type: "normal", desc: "浓郁咖喱炖煮软烂大块牛腩" },
+                    { id: "d1_2", name: "番茄牛腩", price: 8.0, type: "normal", desc: "浓郁番茄酸甜汤汁搭配炖牛腩" }
+                ]
+            }
+        ];
+
+        // Selected Items Tracking
+        const selectedItems = {};
+        let hasAddon = false;
+
+        function renderMenu() {
+            const container = document.getElementById('menu-container');
+            container.innerHTML = '';
+
+            menuData.forEach(cat => {
+                const section = document.createElement('div');
+                section.className = 'french-card p-4 space-y-3';
+
+                let html = `
+                    <div class="flex items-center justify-between border-b border-[#f0cca8] pb-2.5">
+                        <h2 class="font-bold text-base text-[#5c3e31] font-serif-title flex items-center gap-2">
+                            <span class="text-lg">${cat.icon}</span>
+                            <span>${cat.category}</span>
+                        </h2>
+                    </div><div class="space-y-3 pt-1">
+                `;
+
+                cat.items.forEach(item => {
+                    const sel = selectedItems[item.id] || { count: 0, noodleType: '细面', isHandPulled: false };
+                    const isSelected = sel.count > 0;
+                    const imgUrl = dishImages[item.id] || dishImages["m1"];
+
+                    html += `
+                        <div class="dish-card p-2.5 rounded-2xl border ${isSelected ? 'border-[#e88958] bg-[#fdf6f0] shadow-sm' : 'border-[#f2d8c4]/80 bg-white/80'} transition-all flex flex-col gap-2">
+                            <div class="flex items-center justify-between gap-3">
+                                <div class="w-14 h-14 rounded-xl overflow-hidden bg-[#faf0e6] shrink-0 border border-[#edd7c7] flex items-center justify-center shadow-inner">
+                                    <img src="${imgUrl}" alt="${item.name}" class="w-12 h-12 object-contain" />
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <h4 class="font-bold text-sm text-[#4a3528] truncate font-serif-title">${item.name}</h4>
+                                    <p class="text-[10px] text-[#916d5b] truncate mt-0.5">${item.desc}</p>
+                                    <div class="text-[#c25a2b] font-bold text-xs mt-1">${item.price.toFixed(1)} €</div>
+                                </div>
+                                <div class="flex items-center gap-2 shrink-0">
+                                    ${isSelected ? `
+                                        <button onclick="updateCount('${item.id}', -1)" class="w-6 h-6 rounded-full bg-white border border-[#e0b89d] text-[#a65633] flex items-center justify-center font-bold active:scale-90 shadow-sm">
+                                            <i class="fa-solid fa-minus text-[9px]"></i>
+                                        </button>
+                                        <span class="w-4 text-center font-bold text-xs text-[#52372a]">${sel.count}</span>
+                                    ` : ''}
+                                    <button onclick="updateCount('${item.id}', 1)" class="w-6 h-6 rounded-full ${isSelected ? 'bg-[#d96752] text-white' : 'bg-[#f7e4d5] text-[#8c5038] border border-[#e8be9d]'} flex items-center justify-center font-bold active:scale-90 transition-colors shadow-sm">
+                                        <i class="fa-solid fa-plus text-[9px]"></i>
+                                    </button>
+                                </div>
+                            </div>
+                    `;
+
+                    // If Noodle Item Selected: options
+                    if (item.type === 'noodle' && isSelected) {
+                        html += `
+                            <div class="mt-1 pt-2 border-t border-dashed border-[#f0cca8] text-xs">
+                                <div class="flex items-center justify-between flex-wrap gap-1.5">
+                                    <span class="text-[#8c5d47] font-semibold text-[10px]">🍜 面条搭配:</span>
+                                    <div class="flex gap-1">
+                                        <button onclick="setNoodleOption('${item.id}', '细面', false)" class="px-2 py-0.5 rounded-md border text-[10px] font-bold transition ${sel.noodleType === '细面' && !sel.isHandPulled ? 'bg-[#d96752] text-white border-[#d96752] shadow-sm' : 'bg-white text-[#664b3c] border-[#e0c4b0]'}">细面</button>
+                                        <button onclick="setNoodleOption('${item.id}', '扁意面', false)" class="px-2 py-0.5 rounded-md border text-[10px] font-bold transition ${sel.noodleType === '扁意面' && !sel.isHandPulled ? 'bg-[#d96752] text-white border-[#d96752] shadow-sm' : 'bg-white text-[#664b3c] border-[#e0c4b0]'}">扁意面</button>
+                                        <button onclick="setNoodleOption('${item.id}', '手扯面', true)" class="px-2 py-0.5 rounded-md border text-[10px] font-bold transition ${sel.isHandPulled ? 'bg-[#b84d3d] text-white border-[#b84d3d] shadow-sm' : 'bg-[#faede2] text-[#b84d3d] border-[#f0cca8]'}">手扯面 (+1€)</button>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    }
+
+                    html += `</div>`;
+                });
+
+                html += `</div>`;
+                section.innerHTML = html;
+                container.appendChild(section);
+            });
+        }
+
+        function updateCount(itemId, delta) {
+            if (!selectedItems[itemId]) {
+                if (delta > 0) {
+                    selectedItems[itemId] = { count: 1, noodleType: '细面', isHandPulled: false };
+                }
+            } else {
+                selectedItems[itemId].count += delta;
+                if (selectedItems[itemId].count <= 0) {
+                    delete selectedItems[itemId];
+                }
+            }
+            renderMenu();
+            updateSummaryBar();
+        }
+
+        function setNoodleOption(itemId, noodleType, isHandPulled) {
+            if (selectedItems[itemId]) {
+                selectedItems[itemId].noodleType = noodleType;
+                selectedItems[itemId].isHandPulled = isHandPulled;
+                renderMenu();
+                updateSummaryBar();
+            }
+        }
+
+        function toggleAddon(checkbox) {
+            hasAddon = checkbox.checked;
+            updateSummaryBar();
+        }
+
+        function calculateTotal() {
+            let totalCount = 0;
+            let totalPrice = 0;
+
+            for (const id in selectedItems) {
+                const item = findItemById(id);
+                const sel = selectedItems[id];
+                if (item) {
+                    totalCount += sel.count;
+                    let itemUnitPrice = item.price;
+                    if (sel.isHandPulled) {
+                        itemUnitPrice += 1.0;
+                    }
+                    totalPrice += itemUnitPrice * sel.count;
+                }
+            }
+
+            if (hasAddon) {
+                totalPrice += 1.0;
+            }
+
+            return { totalCount, totalPrice };
+        }
+
+        function findItemById(id) {
+            for (const cat of menuData) {
+                const found = cat.items.find(i => i.id === id);
+                if (found) return found;
+            }
+            return null;
+        }
+
+        function updateSummaryBar() {
+            const { totalCount, totalPrice } = calculateTotal();
+            document.getElementById('total-items-count').innerText = totalCount;
+            document.getElementById('badge-count').innerText = totalCount + (hasAddon ? 1 : 0);
+            document.getElementById('total-price').innerText = totalPrice.toFixed(2);
+        }
+
+        function openOrderModal() {
+            const { totalCount, totalPrice } = calculateTotal();
+            if (totalCount === 0 && !hasAddon) {
+                showToast("请先选择您喜爱的美食菜品哦 😋");
+                return;
+            }
+
+            let text = "🍷【朱莉娅的小厨房 · 确认点单】🍷\n";
+            text += "-----------------------------------\n";
+
+            for (const id in selectedItems) {
+                const item = findItemById(id);
+                const sel = selectedItems[id];
+                if (item) {
+                    let linePrice = item.price;
+                    let desc = `${item.name} × ${sel.count}`;
+                    if (item.type === 'noodle') {
+                        if (sel.isHandPulled) {
+                            desc += ` (手扯面 +1€)`;
+                            linePrice += 1.0;
+                        } else {
+                            desc += ` (${sel.noodleType}, 免费)`;
+                        }
+                    }
+                    text += `• ${desc} : ${(linePrice * sel.count).toFixed(1)}€\n`;
+                }
+            }
+
+            if (hasAddon) {
+                text += `• 🍱 盲盒加购：米饭 + 每日精选盲盒菜品 : 1.0€\n`;
+            }
+
+            text += "-----------------------------------\n";
+            text += `💰 订单金额总计：${totalPrice.toFixed(2)} €\n`;
+            text += "期待朱莉娅主厨的美味烹饪！Bon Appétit 💕";
+
+            document.getElementById('modal-order-content').innerText = text;
+            document.getElementById('order-modal').classList.remove('hidden');
+        }
+
+        function closeOrderModal() {
+            document.getElementById('order-modal').classList.add('hidden');
+        }
+
+        function copyOrderText() {
+            const text = document.getElementById('modal-order-content').innerText;
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            document.body.appendChild(textarea);
+            textarea.select();
+            try {
+                document.execCommand('copy');
+                showToast("复制成功！快去黏贴发送给朱莉娅吧 💌");
+                document.getElementById('copy-btn-text').innerText = "已成功复制 ✓";
+                setTimeout(() => {
+                    document.getElementById('copy-btn-text').innerText = "复制点单明细 📋";
+                }, 2000);
+            } catch (err) {
+                showToast("复制失败，请手动选择复制文本");
+            }
+            document.body.removeChild(textarea);
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-msg').innerText = msg;
+            toast.classList.remove('opacity-0', 'pointer-events-none');
+            toast.classList.add('opacity-100');
+            setTimeout(() => {
+                toast.classList.remove('opacity-100');
+                toast.classList.add('opacity-0', 'pointer-events-none');
+            }, 2500);
+        }
+
+        window.onload = function() {
+            renderMenu();
+        };
+    </script>
+</body>
+</html>
