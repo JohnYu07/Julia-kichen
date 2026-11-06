@@ -96,6 +96,35 @@
             </div>
         </div>
 
+        <!-- Meal Time Selection Card -->
+        <div class="french-card p-4 mb-5 bg-gradient-to-r from-[#ffffff] via-[#fffdfa] to-[#fffaf5] border border-[#f0cca8] shadow-sm">
+            <div class="flex items-center justify-between mb-2.5 border-b border-[#f3e2d3] pb-2">
+                <h3 class="font-bold text-sm text-[#4a3528] font-serif-title flex items-center gap-1.5">
+                    <span class="text-base">🕒</span>
+                    <span>选择预约用餐时间</span>
+                </h3>
+                <span class="text-[10px] text-[#b0785b] bg-[#fcf0e4] px-2 py-0.5 rounded-full border border-[#ebd0bc] font-medium">请选择送达/用餐时段</span>
+            </div>
+            <div class="grid grid-cols-2 gap-2 text-xs" id="time-selector-container">
+                <button onclick="selectMealTime('周六中午')" class="time-btn p-2 rounded-xl border border-[#e0c4b0] bg-white text-[#5c3e31] font-medium hover:border-[#d96752] transition text-center flex items-center justify-center gap-1.5">
+                    <i class="fa-regular fa-sun text-amber-500 text-[11px]"></i>
+                    <span>周六中午</span>
+                </button>
+                <button onclick="selectMealTime('周六晚上')" class="time-btn p-2 rounded-xl border border-[#e0c4b0] bg-white text-[#5c3e31] font-medium hover:border-[#d96752] transition text-center flex items-center justify-center gap-1.5">
+                    <i class="fa-regular fa-moon text-indigo-400 text-[11px]"></i>
+                    <span>周六晚上</span>
+                </button>
+                <button onclick="selectMealTime('周日中午')" class="time-btn p-2 rounded-xl border border-[#e0c4b0] bg-white text-[#5c3e31] font-medium hover:border-[#d96752] transition text-center flex items-center justify-center gap-1.5">
+                    <i class="fa-regular fa-sun text-amber-500 text-[11px]"></i>
+                    <span>周日中午</span>
+                </button>
+                <button onclick="selectMealTime('周日晚上')" class="time-btn p-2 rounded-xl border border-[#e0c4b0] bg-white text-[#5c3e31] font-medium hover:border-[#d96752] transition text-center flex items-center justify-center gap-1.5">
+                    <i class="fa-regular fa-moon text-indigo-400 text-[11px]"></i>
+                    <span>周日晚上</span>
+                </button>
+            </div>
+        </div>
+
         <!-- Menu Categories -->
         <div id="menu-container" class="space-y-6">
             <!-- Rendered by JavaScript -->
@@ -246,6 +275,23 @@
         // Selected Items Tracking
         const selectedItems = {};
         let hasAddon = false;
+        let selectedMealTime = '周六中午'; // 默认选中的用餐时间
+
+        function selectMealTime(timeStr) {
+            selectedMealTime = timeStr;
+            updateMealTimeUI();
+        }
+
+        function updateMealTimeUI() {
+            const buttons = document.querySelectorAll('.time-btn');
+            buttons.forEach(btn => {
+                if (btn.innerText.includes(selectedMealTime)) {
+                    btn.className = 'time-btn p-2 rounded-xl border-2 border-[#d96752] bg-[#fdf2eb] text-[#c25a2b] font-bold shadow-sm transition text-center flex items-center justify-center gap-1.5';
+                } else {
+                    btn.className = 'time-btn p-2 rounded-xl border border-[#e0c4b0] bg-white text-[#5c3e31] font-medium hover:border-[#d96752] transition text-center flex items-center justify-center gap-1.5';
+                }
+            });
+        }
 
         function renderMenu() {
             const container = document.getElementById('menu-container');
@@ -395,6 +441,7 @@
             }
 
             let text = "🍷【朱莉娅的小厨房 · 确认点单】🍷\n";
+            text += `🕒 预约用餐时间：${selectedMealTime}\n`;
             text += "-----------------------------------\n";
 
             for (const id in selectedItems) {
@@ -463,6 +510,7 @@
 
         window.onload = function() {
             renderMenu();
+            updateMealTimeUI();
         };
     </script>
 </body>
